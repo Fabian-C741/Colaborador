@@ -1,0 +1,13 @@
+node_modules/
+.vercel/
+*.log
+
+# Secretos y variables de entorno (nunca subir)
+.env
+.env.*
+!.env.example
+
+# Datos locales / temporales
+data/
+.DS_Store
+Thumbs.db

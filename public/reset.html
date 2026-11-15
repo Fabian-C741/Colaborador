@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b1020" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Restablecer contraseña</title>
+  </head>
+  <body class="auth-page">
+    <main class="auth-card">
+      <div class="brand">
+        <img data-logo class="brand-logo hidden" alt="Logo" />
+        <div class="brand-mark">MP</div>
+        <div>
+          <h1 data-event-name>Cargando…</h1>
+          <p class="muted small">Restablecer contraseña</p>
+        </div>
+      </div>
+
+      <p class="hint" id="reset-status">Verificando el enlace…</p>
+
+      <form id="reset-form" class="hidden">
+        <label>
+          Nueva contraseña
+          <input id="reset-password" type="password" autocomplete="new-password" minlength="6" required />
+        </label>
+        <label>
+          Repetir nueva contraseña
+          <input id="reset-password-repeat" type="password" autocomplete="new-password" minlength="6" required />
+        </label>
+        <button class="btn primary" type="submit" id="reset-btn" style="width: 100%">Guardar contraseña</button>
+        <p class="error" id="reset-error"></p>
+      </form>
+
+      <div class="hidden" id="reset-done">
+        <p class="hint" style="color: var(--ok)">Contraseña actualizada. Redirigiendo al ingreso…</p>
+      </div>
+
+      <p class="recover-link"><a href="/" class="small">Volver al ingreso</a></p>
+    </main>
+
+    <footer class="page-footer"><span data-footer></span></footer>
+
+    <script type="module" src="/js/reset.js"></script>
+  </body>
+</html>
