@@ -8,16 +8,17 @@ PWA para gestionar la recaudación de un evento: venta de productos a precio fij
 
 - **Frontend**: PWA en `public/` (HTML + JS vanilla, sin build). Usa el cliente de
   Supabase (auth, datos con RLS, tiempo real) y un service worker para uso offline.
-- **Backend**: una única función serverless (`api/index.js`, Express) para lo que
-  necesita secretos: alta de usuarios, creación de órdenes de Mercado Pago, webhook
-  firmado y sincronización de transferencias. En local corre con `server.js`.
+- **Backend**: la app Express (`server.js` + `src/`) para lo que necesita secretos:
+  alta de usuarios, creación de órdenes de Mercado Pago, webhook firmado y
+  sincronización de transferencias. En Vercel se despliega zero-config (detecta el
+  `server.js`) como una única función; en local corre con `server.js`.
 - **Base de datos**: Supabase (Postgres + Auth + Realtime). Esquema en `supabase/schema.sql`.
 - **Deploy**: Vercel (frontend + funciones + cron).
 
 ```
 public/            PWA (index.html login, app.html panel, js/, css/)
 src/               app Express, rutas, cliente Supabase admin, integración MP
-api/index.js       entrada serverless de Vercel
+server.js          entrada Express (local y detección zero-config en Vercel)
 supabase/          schema.sql, seed.sql
 scripts/           bootstrap-admin.js
 ```
