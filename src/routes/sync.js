@@ -97,7 +97,7 @@ async function syncTransfers() {
   return { checked: movements.length, inserted };
 }
 
-// Cron de Vercel (cada 5 min): sincroniza transferencias Y reconcilia pagos.
+// Cron de Vercel (diario 06:00): sincroniza transferencias Y reconcilia pagos.
 // El respaldo de pagos corre acá para no depender sólo del webhook.
 router.get('/cron/sync-transfers', async (req, res) => {
   const secret = process.env.CRON_SECRET;

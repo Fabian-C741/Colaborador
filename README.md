@@ -44,12 +44,14 @@ scripts/           bootstrap-admin.js
 Copiá `.env.example` a `.env` y completá:
 
 ```
+PORT=3000
+BASE_URL=http://localhost:3000
 SUPABASE_URL=...
 SUPABASE_ANON_KEY=...
 SUPABASE_SERVICE_ROLE_KEY=...
 MP_ACCESS_TOKEN=...
 MP_WEBHOOK_SECRET=...
-BASE_URL=http://localhost:3000
+MP_CURRENCY=ARS
 CRON_SECRET=una-cadena-larga-aleatoria
 ```
 
@@ -73,10 +75,12 @@ Ingresá con el admin creado y, desde **Admin > Colaboradores**, creá las cuent
 1. Importá el repositorio en Vercel.
 2. Cargá las mismas variables de entorno (Project Settings > Environment Variables),
    con `BASE_URL` = la URL de producción.
-3. Deploy. El cron `/api/cron/sync-transfers` sincroniza transferencias cada 5 minutos.
+3. Deploy. El cron `/api/cron/sync-transfers` sincroniza transferencias y concilia pagos
+   una vez por día a las 06:00 (UTC). Si querés cada 5 minutos, cambiá el `schedule` en
+   `vercel.json` a `*/5 * * * *`.
 
-> Requiere plan **Vercel Pro** (el uso comercial no está permitido en Hobby y los cron
-> de 5 minutos necesitan Pro) y **Supabase Pro** en producción (backups/PITR y sin pausas).
+> Requiere plan **Vercel Pro** para uso comercial (Hobby no lo permite) y **Supabase Pro**
+> en producción (backups/PITR y sin pausas). El cron diario funciona en cualquier plan.
 
 ## Cómo funciona
 
